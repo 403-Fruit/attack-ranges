@@ -271,6 +271,8 @@ public class AttackRangesPlugin extends Plugin
 
 	private void updatePlayerAttackRange()
 	{
+		
+		final int currentAttackStyleVarbit = client.getVarpValue(VarPlayer.ATTACK_STYLE);
 		final int attackStyleVarbit = client.getVarpValue(VarPlayerID.COM_MODE);
 		final int weaponTypeVarbit = client.getVarbitValue(VarbitID.COMBAT_WEAPON_CATEGORY);
 		if (equippedWeapon == null)
@@ -281,7 +283,16 @@ public class AttackRangesPlugin extends Plugin
 
 		if (!weaponsMap.containsKey(equippedWeapon.getId()))
 		{
-			playerAttackRange = 1;
+			if (currentAttackStyleVarbit == 4)
+			{
+				// First fallback to standard autocast range if in use
+				playerAttackRange = 10;
+			}
+			else
+			{
+				// Otherwise, use the configured value
+				playerAttackRange = config.defaultAttackRange();
+			}
 			return;
 		}
 
