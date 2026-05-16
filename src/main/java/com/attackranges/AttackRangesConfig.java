@@ -141,7 +141,7 @@ public interface AttackRangesConfig extends Config
 		name = "Default attack range",
 		description = "Attack range to use if weapon is unknown.",
 		section = options,
-		position 10
+		position = 10
 	)
 	default int defaultAttackRange()
 	{
