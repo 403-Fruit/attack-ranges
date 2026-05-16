@@ -135,6 +135,18 @@ public interface AttackRangesConfig extends Config
 	{
 		return false;
 	}
+	
+	@ConfigItem(
+		keyName = "defaultAttackRange",
+		name = "Default attack range",
+		description = "Attack range to use if weapon is unknown.",
+		section = options,
+		position 10
+	)
+	default int defaultAttackRange()
+	{
+		return 1;
+	}
 
 	@ConfigItem(
 		keyName = "displayMode",
